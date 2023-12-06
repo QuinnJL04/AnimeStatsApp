@@ -55,6 +55,77 @@ JOIN reviews r ON u.profile = r.profile
 JOIN animes a ON r.anime_uid = a.uid
 WHERE u.profile = '34pokemon';
 
+-- top ten highest rated anime
+SELECT title, score
+FROM animes
+ORDER BY score DESC
+LIMIT 10;
+
+-- top ten most popular anime
+SELECT title, popularity
+FROM animes
+ORDER BY popularity DESC
+LIMIT 10;
+
+-- ten most recently aired anime 
+SELECT title, aired
+FROM animes
+ORDER BY aired DESC
+LIMIT 10;
+
+-- longest animes 
+SELECT title, episodes
+FROM animes
+ORDER BY episodes DESC
+LIMIT 10;
+
+-- most interacted with animes
+SELECT profile, COUNT(uid) AS review_count
+FROM reviews
+GROUP BY profile
+ORDER BY review_count DESC
+LIMIT 10;
+
+-- average score per genre
+SELECT genre, ROUND(AVG(score), 2) AS average_score
+FROM animes
+GROUP BY genre
+ORDER BY average_score DESC;
+
+CREATE TEMPORARY TABLE SimilarUsers AS
+SELECT DISTINCT r1.profile AS user1, r2.profile AS user2
+FROM reviews r1
+JOIN reviews r2 ON r1.anime_uid = r2.anime_uid AND r1.profile <> r2.profile
+WHERE r1.profile = "34pokemon";
+
+-- Get a list of recommended anime based on what similar users have watched
+SELECT DISTINCT a.title, a.genre, AVG(r.score) AS average_score
+FROM SimilarUsers s
+JOIN reviews r ON s.user2 = r.profile
+JOIN animes a ON r.anime_uid = a.uid
+WHERE s.user1 = "34pokemon"
+GROUP BY a.title, a.genre
+ORDER BY average_score DESC
+LIMIT 10;
+
+-- gets a specific users most watched genre 
+
+SET @desired_user_profile := '34pokemon';
+
+SELECT genre, COUNT(*) AS watch_count
+FROM reviews r
+JOIN animes a ON r.anime_uid = a.uid
+WHERE r.profile = @desired_user_profile
+GROUP BY genre
+ORDER BY watch_count DESC
+LIMIT 1;
+
+
+
+
+
+
+
 
 
 
