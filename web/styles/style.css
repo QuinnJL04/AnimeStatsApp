@@ -1,0 +1,161 @@
+:root {
+    /* Colors */
+    --primary-text: #1d1d1f;
+    --secondary-text: #8D8B9A;
+    --line-stroke: #c6c6c6;
+    --error-text: #FF3B30;
+
+    --blue-1: #0000FF;
+    --blue-2: #2929CC;
+    --blue-3: #3D3D99;
+    --blue-4: #3D3D66;
+    --blue-5: #292933;
+
+    overflow: hidden;
+}
+
+/* Titles */
+.title {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    color: var(--primary-text);
+    font-weight: 800; /* Extra bold */
+    text-align: center;
+    margin-top: 36px;
+    margin-bottom: 12px;
+}
+
+/* Title body text */
+.title-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--secondary-text);
+    font-weight: 400; /* Medium */
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+/* Title line break */
+.title-divider {
+    width: 80%; 
+    border: none; 
+    border-top: 1px solid var(--line-stroke); 
+}
+
+/* Headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    color: var(--primary-text);
+    font-weight: bold;
+}
+
+/* Landing page header text */
+.landing-header {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    color: var(--primary-text);
+    font-weight: bold;
+    text-align: center;
+    margin: 15% auto 0; 
+}
+
+/* Body text */
+.body-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--secondary-text);
+    font-weight: 400; /* Medium */
+}
+
+/* Search Box Container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px; 
+}
+
+/* Body Search Box */
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 50%; 
+    max-width: 405px; 
+}
+
+#anime-search {
+    flex: 1;
+    padding: 12px;
+    margin-right: 8px;
+    font-size: 12px;
+    border: 1px solid var(--line-stroke);
+    outline: none; /* Remove default outline on focus */
+    border-radius: 4px;
+    transition: border-color 0.3s ease; 
+}
+
+    /* Placeholder styling */
+    ::placeholder {
+        color: var(--secondary-text);
+        font-size: 12px;
+        transition: color 0.3s ease; 
+}
+
+/* Change text box border color when input field is not empty */
+#anime-search:not(:placeholder-shown) {
+    border-color: var(--primary-text); 
+}
+
+/* Change placeholder color when input field is not empty */
+#anime-search:not(:placeholder-shown)::placeholder {
+    color: transparent; 
+}
+
+/* Hide the default clear button */
+#anime-search::-ms-clear,
+#anime-search::-ms-reveal {
+    display: none;
+}
+
+/* WebKit browsers */
+#anime-search::-webkit-search-decoration,
+#anime-search::-webkit-search-cancel-button,
+#anime-search::-webkit-search-results-button,
+#anime-search::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+#search-button {
+    padding: 12px 24px; 
+    font-size: 12px;
+    font-weight: 600; /* Semi-Bold */
+    border: 1px solid var(--blue-1); 
+    border-radius: 4px;
+    background-color: var(--blue-1); 
+    color: white; 
+    cursor: pointer;
+    transition: transform 0.2s ease; 
+}
+
+/* Increasing size on button click */
+#search-button:hover {
+    transform: scale(1.05); 
+}
+
+.error-message {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 400px;
+    color: var(--error-text);
+    text-align: center;
+    margin-top: 8px;
+}
+
+
